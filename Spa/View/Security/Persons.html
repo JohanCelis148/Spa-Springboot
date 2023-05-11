@@ -7,7 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel="stylesheet" href="/Asset/Css/View/Security/Persons.css">
-    <script src="/Js/View/Security/Persons.js"></script>
+    
+    <!-- Agregar jquery -->
+    <script src="/Asset/Library/node_modules/jquery/dist/jquery.js"></script>
+
+    <script src="../../Js/View/Security/Persons.js"></script>
     <title>Persons | Spa</title>
 </head>
 
@@ -44,7 +48,7 @@
 
                     <div class="campos">
                         <label for="" class="form-label mt-2">Segundo nombre</label><br>
-                        <input type="text" class="form-control" name="LastName" id="secondLastName" aria-describedby="" placeholder="Segundo nombre" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                        <input type="text" class="form-control" name="secondName" id="secondName" aria-describedby="" placeholder="Segundo nombre" onkeyup="javascript:this.value=this.value.toUpperCase();">
                     </div>
 
                     <div class="campos">
@@ -111,7 +115,6 @@
         <table class="table table-hover">
             <thead>
                 <tr class="table-primary">
-                    <th>Id</th>
                     <th>Tipo Documento</th>
                     <th>Documento</th>
                     <th>Primer Nombre</th>
@@ -127,25 +130,8 @@
                     <th colspan="2">Opciones</th>
                 </tr>
             </thead>
-            <tbody>
-                <!-- data result database -->
-                <tr class="table-light">
-                    <td>1</td>
-                    <td>CC</td>
-                    <td>4623785</td>
-                    <td>Mario</td>
-                    <td>Pepito</td>
-                    <td>Peres</td>
-                    <td>Ortega</td>
-                    <td>22</td>
-                    <td>Masculino</td>
-                    <td>pepitoperez@gmail.com</td>
-                    <td>3125698789</td>
-                    <td>Calle 45#25-6</td>
-                    <td>Activo</td>
-                    <td><button class="btnEdit" type="button" onclick="findById();"><i class="fi fi-rr-pencil"></i></button></td>
-                    <td><button class="btnDelete" type="button" onclick="deleteById();"><i class="fi fi-rr-trash"></i></button></td>
-                </tr>
+            <tbody id="dataResult">
+                
             </tbody>
         </table>
     </div>
@@ -156,5 +142,9 @@
     </form>
     </div>
 </body>
+
+<script>
+    loadTable();
+</script>
 
 </html>

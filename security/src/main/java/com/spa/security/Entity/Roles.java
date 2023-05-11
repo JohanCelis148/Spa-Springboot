@@ -1,5 +1,7 @@
 package com.spa.security.Entity;
 
+import java.util.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,10 +32,10 @@ public class Roles {
 	private Integer userModificationId;
 	
 	@Column (name = "date_creation", nullable = false, columnDefinition = "TIMESTAMP")
-	private Integer dateCreation;
+	private Date dateCreation;
 	
 	@Column (name = "date_modification", columnDefinition = "TIMESTAMP")
-	private String dateModification;
+	private Date dateModification;
 
 	public Integer getId() {
 		return Id;
@@ -83,21 +85,22 @@ public class Roles {
 		this.userModificationId = userModificationId;
 	}
 
-	public Integer getDateCreation() {
+	public Date getDateCreation() {
 		return dateCreation;
 	}
 
-	public void setDateCreation(Integer dateCreation) {
+	public void setDateCreation(Date dateCreation) {
 		this.dateCreation = dateCreation;
 	}
 
-	public String getDateModification() {
+	public Date getDateModification() {
 		return dateModification;
 	}
 
-	public void setDateModification(String dateModification) {
+	public void setDateModification(Date dateModification) {
 		this.dateModification = dateModification;
 	}
-	
+
+		
 	
 }
