@@ -20,7 +20,7 @@ public class Views {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Id;
 	
-	@Column(name = "route", length = 150)
+	@Column(name = "route", length = 250)
 	private String route;
 	
 	@Column (name = "label", nullable = false, length = 100)

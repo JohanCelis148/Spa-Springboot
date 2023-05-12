@@ -9,12 +9,9 @@ function findById(id) {
         }
     }).done(function (item) {
         $("#id").val(item.id)
-        $("#tipoDocumento").val(item.tipoDocumento)
-        $("#documento").val(item.documento)
-        $("#nombreCompleto").val(item.nombreCompleto)
-        $("#correo").val(item.correo)
-        $("#telefono").val(item.telefono)
-        $("#estado").val(item.estado==true?'1':'0')      
+        $("#code").val(item.code)
+        $("#description").val(item.description)
+        $("#status").val(item.status==true?'1':'0')      
     })
 }
 
@@ -31,7 +28,6 @@ function loadTable() {
             registros += `
 
                         <tr class="table-light">
-                            <td>`+item.id+`</td>
                             <td>`+item.code+`</td>
                             <td>`+item.description+`</td>
                             <td>`+(item.status==true?'Activo':'Inactivo')+`</td>
@@ -63,12 +59,11 @@ function Add(){
     $.ajax({
         url: 'http://localhost:9000/security/api/security/modules',
         data: JSON.stringify({
-            tipoDocumento: $("#tipoDocumento").val(),
-            documento: $("#documento").val(),
-            nombreCompleto: $("#nombreCompleto").val(),
-            correo: $("#correo").val(),
-            telefono: $("#telefono").val(),
-            estado: parseInt($("#estado").val())
+            code: $("#code").val(),
+            description: $("#description").val(),
+            status: parseInt($("#status").val()),
+            userCreationId: 1,
+            dateCreation: new Date()
         }),
         method: "POST",
         headers: {
@@ -89,12 +84,13 @@ function Update(){
     $.ajax({
         url: 'http://localhost:9000/security/api/security/modules/' + $("#id").val(),
         data: JSON.stringify({
-            tipoDocumento: $("#tipoDocumento").val(),
-            documento: $("#documento").val(),
-            nombreCompleto: $("#nombreCompleto").val(),
-            correo: $("#correo").val(),
-            telefono: $("#telefono").val(),
-            estado: parseInt($("#estado").val())
+            code: $("#code").val(),
+            description: $("#description").val(),
+            status: parseInt($("#status").val()),
+            userCreationId: 1,
+            dateCreation: new Date(),
+            userModificationId: 1,
+            dateModification: new Date()
         }),
         method: "PUT",
         headers: {
@@ -112,10 +108,7 @@ function Update(){
 // Función para limpiar datos
 function clearData(){
     $("#id").val(""),
-    $("#tipoDocumento").val(""),
-    $("#documento").val(""),
-    $("#nombreCompleto").val(""),
-    $("#correo").val(""),
-    $("#telefono").val(""),
-    $("#estado").val("")
+    $("#code").val(""),
+    $("#description").val(""),
+    $("#status").val("")
 }

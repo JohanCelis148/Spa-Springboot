@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel="stylesheet" href="/Asset/Css/View/Security/Roles.css">
+    <!-- Agregar jquery -->
+    <script src="/Asset/Library/node_modules/jquery/dist/jquery.js"></script>
     <script src="/Js/View/Security/Roles.js"></script>
     <title>Persons | Spa</title>
 </head>
@@ -23,12 +25,12 @@
                 <div class="form-group">
                     <div class="campos">
                         <label for="" class="form-label mt-2 ">Codigo</label><br>
-                        <input type="text" class="form-control codigo" name="document" id="document" aria-describedby="" placeholder="Digite el codigo">
+                        <input type="text" class="form-control codigo" name="code" id="code" aria-describedby="" placeholder="Digite el codigo">
                     </div>
 
                     <div class="campos">
                         <label for="" class="form-label mt-2">Descripción</label><br>
-                        <input type="text" class="form-control" name="firstName" id="firstName" aria-describedby="" placeholder="Describa el rol" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                        <input type="text" class="form-control" name="description" id="description" aria-describedby="" placeholder="Describa el rol" onkeyup="javascript:this.value=this.value.toUpperCase();">
                     </div>
 
                     <div class="campos">
@@ -61,16 +63,8 @@
                     <th colspan="2">Opciones</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="dataResult">
                 <!-- data result database -->
-                <tr class="table-light">
-                    <td>1</td>
-                    <td>GE2569</td>
-                    <td>Gerente general</td>
-                    <td>Activo</td>
-                    <td><button class="btnEdit" type="button" onclick="findById();"><i class="fi fi-rr-pencil"></i></button></td>
-                    <td><button class="btnDelete" type="button" onclick="deleteById();"><i class="fi fi-rr-trash"></i></button></td>
-                </tr>
             </tbody>
         </table>
     </div>
@@ -83,3 +77,7 @@
 </body>
 
 </html>
+
+<script>
+    loadTable();
+</script>

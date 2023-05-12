@@ -44,10 +44,10 @@ public class Persons {
 	@Column (name = "mail", nullable = false, length = 80)
 	private String mail;
 	
-	@Column(name = "phone_number", nullable = false, length = 10)
-	private Integer phoneNumber;
+	@Column(name = "phone_number", nullable = false, length = 20)
+	private String phoneNumber;
 	
-	@Column (name = "address", nullable = false, length = 30)
+	@Column (name = "address", nullable = false, length = 80)
 	private String address;
 	
 	@Column(name = "status")
@@ -145,11 +145,11 @@ public class Persons {
 		this.mail = mail;
 	}
 
-	public Integer getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(Integer phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 

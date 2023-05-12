@@ -17,8 +17,8 @@ public class Modules {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Id;
 	
-	@Column (name = "code", nullable = false, unique = true, length = 5)
-	private Integer code;
+	@Column (name = "code", nullable = false, unique = true, length = 10)
+	private String code;
 	
 	@Column (name = "description", nullable = false, length = 50)
 	private String description;
@@ -46,11 +46,11 @@ public class Modules {
 		Id = id;
 	}
 
-	public Integer getCode() {
+	public String getCode() {
 		return code;
 	}
 
-	public void setCode(Integer code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 
