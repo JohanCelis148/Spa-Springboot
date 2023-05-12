@@ -9,8 +9,9 @@ function findById(id) {
         }
     }).done(function (item) {
         $("#id").val(item.id)
-        $("#code").val(item.code)
-        $("#description").val(item.description)
+        $("#route").val(item.route)
+        $("#label").val(item.label)
+        $("#moduleId").val(item.moduleId.id)
         $("#status").val(item.status==true?'1':'0')      
     })
 }
@@ -29,7 +30,8 @@ function loadTable() {
 
                         <tr class="table-light">
                             <td>`+item.route+`</td>
-                            <td>`+item.description+`</td>
+                            <td>`+item.label+`</td>
+                            <td>`+item.moduleId.description+`</td>
                             <td>`+(item.status==true?'Activo':'Inactivo')+`</td>
                             <td><button class="btnEdit" type="button" onclick="findById(`+item.id+`);"><i class="fi fi-rr-pencil"></i></button></td>
                             <td><button class="btnDelete" type="button" onclick="deleteById(`+item.id+`);"><i class="fi fi-rr-trash"></i></button></td>
@@ -59,8 +61,11 @@ function Add(){
     $.ajax({
         url: 'http://localhost:9000/security/api/security/views',
         data: JSON.stringify({
-            code: $("#code").val(),
-            description: $("#description").val(),
+            route: $("#route").val(),
+            label: $("#label").val(),
+            moduleId: {
+                id:$("#moduleId").val()
+            },  
             status: parseInt($("#status").val()),
             userCreationId: 1,
             dateCreation: new Date()
@@ -84,8 +89,11 @@ function Update(){
     $.ajax({
         url: 'http://localhost:9000/security/api/security/views/' + $("#id").val(),
         data: JSON.stringify({
-            code: $("#code").val(),
-            description: $("#description").val(),
+            route: $("#route").val(),
+            label: $("#label").val(),
+            moduleId: {
+                id:$("#moduleId").val()
+            },  
             status: parseInt($("#status").val()),
             userCreationId: 1,
             dateCreation: new Date(),
@@ -108,7 +116,8 @@ function Update(){
 // Función para limpiar datos
 function clearData(){
     $("#id").val(""),
-    $("#code").val(""),
-    $("#description").val(""),
+    $("#route").val(""),
+    $("#label").val(""),
+    $("#moduleId").val(""),
     $("#status").val("")
 }

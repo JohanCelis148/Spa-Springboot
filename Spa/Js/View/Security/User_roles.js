@@ -1,82 +1,122 @@
-function Add(action) {
-    var parametros = {              
-        "userID": $('#userID').val(),
-        "rolID": $('#rolID').val(),
-        "status": $('#status').val(),
-        "action": action
-    };
-
+//Cargar de manera automatica los datos regostrados
+// Busqueda por id
+function findById(id) {
     $.ajax({
-        data: parametros, //datos que se van a enviar al ajax
-        url: '../../Controller/security/UsersRoles.php', //archivo php que recibe los datos
-        type: 'post', //método para enviar los datos
-        dataType: 'json', //Recibe el array desde php
-
-        success: function(respuesta) { //procesa y devuelve la respuesta
-            
-            //Respueta adicionar
-            if(respuesta['accion']=='Add'){
-                alert(respuesta['respuesta']);
-                Limpiar();                
-            }           
+        url: 'http://localhost:9000/security/api/security/usersRoles/' + id,
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
         }
-    });
+    }).done(function (item) {
+        $("#id").val(item.id)
+        $("#roleId").val(item.roleId.id)
+        $("#userId").val(item.userId.id)
+        $("#status").val(item.status==true?'1':'0')      
+    })
 }
 
-function Update(action) {
-    var parametros = {   
-        "id": $('#id').val(),  
-        "userID": $('#userID').val(),
-        "rolID": $('#rolID').val(),
-        "status": $('#status').val(),
-        "action": action
-    };
-
+function loadTable() {
     $.ajax({
-        data: parametros, //datos que se van a enviar al ajax
-        url: '../../Controller/security/UsersRoles.php', //archivo php que recibe los datos
-        type: 'post', //método para enviar los datos
-        dataType: 'json', //Recibe el array desde php
-
-        success: function(respuesta) { //procesa y devuelve la respuesta
-            
-            //Respueta adicionar
-            if(respuesta['accion']=='Add'){
-                alert(respuesta['respuesta']);
-                Limpiar();                
-            }           
+        url: 'http://localhost:9000/security/api/security/usersRoles',
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
         }
-    });
+    }).done(function (items) {
+        var registros = "";
+        items.forEach(function (item, index, array) {
+            registros += `
+
+                        <tr class="table-light">
+                            <td>`+item.roleId.description+`</td>
+                            <td>`+item.userId.user+`</td>
+                            <td>`+(item.status==true?'Activo':'Inactivo')+`</td>
+                            <td><button class="btnEdit" type="button" onclick="findById(`+item.id+`);"><i class="fi fi-rr-pencil"></i></button></td>
+                            <td><button class="btnDelete" type="button" onclick="deleteById(`+item.id+`);"><i class="fi fi-rr-trash"></i></button></td>
+                        </tr>
+                        `;
+        })
+        $("#dataResult").html(registros);   
+    })
 }
 
-function Consult(action) {
-    var parametros = {     
-        "id": $('#id').val(),
-        "userID": $('#userID').val(),
-        "rolID": $('#rolID').val(),
-        "status": $('#status').val(),
-        "action": action
-    };
-
+//Accion para eliminar un registro seleccionado 
+function deleteById(id){
     $.ajax({
-        data: parametros, //datos que se van a enviar al ajax
-        url: '../../Controller/security/UsersRoles.php', //archivo php que recibe los datos
-        type: 'post', //método para enviar los datos
-        dataType: 'json', //Recibe el array desde php
-
-        success: function(respuesta) { //procesa y devuelve la respuesta
-            
-            //Respueta adicionar
-            if(respuesta['accion']=='Add'){
-                alert(respuesta['respuesta']);
-                Limpiar();                
-            }           
+        url: 'http://localhost:9000/security/api/security/usersRoles/' + id,
+        method: "delete",
+        headers: {
+            "Content-Type": "application/json"
         }
-    });
+    }).done(function (result) {
+        loadTable();
+    })
 }
 
-function Limpiar(){
-    $('#code').val("");
-    $('#description').val("");
-    $('#status').val("");    
+
+//Accion de adicionar un registro
+function Add(){
+    $.ajax({
+        url: 'http://localhost:9000/security/api/security/usersRoles',
+        data: JSON.stringify({
+            roleId: {
+                id:$("#roleId").val()
+            },
+            userId: {
+                id:$("#userId").val()
+            },  
+            status: parseInt($("#status").val()),
+            userCreationId: 1,
+            dateCreation: new Date()
+        }),
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).done(function (result) {
+        //Cargar datos
+        loadTable();
+
+        //Limpiar formulario
+        clearData();
+    })
+}
+
+
+//Accion de actualizar un registro
+function Update(){
+    $.ajax({
+        url: 'http://localhost:9000/security/api/security/usersRoles/' + $("#id").val(),
+        data: JSON.stringify({
+            roleId: {
+                id:$("#roleId").val()
+            },
+            userId: {
+                id:$("#userId").val()
+            },  
+            status: parseInt($("#status").val()),
+            userCreationId: 1,
+            dateCreation: new Date(),
+            userModificationId: 1,
+            dateModification: new Date()
+        }),
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).done(function (result) {
+        //Cargar datos
+        loadTable();
+
+        //Limpiar formulario
+        clearData();
+    })
+}
+
+// Función para limpiar datos
+function clearData(){
+    $("#id").val(""),
+    $("#roleId").val(""),
+    $("#userId").val(""),
+    $("#status").val("")
 }

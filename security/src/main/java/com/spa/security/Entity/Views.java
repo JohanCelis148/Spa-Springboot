@@ -10,7 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 @Table(name = "views")
@@ -26,11 +26,11 @@ public class Views {
 	@Column (name = "label", nullable = false, length = 100)
 	private String label;
 	
-	@OneToOne(fetch = FetchType.EAGER, optional = false)
+	@ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "module_id", nullable = false, unique = true)
     private Modules moduleId;
 	
-	@Column (name = "status", nullable = false, columnDefinition = "ENUM('0','1')")
+	@Column (name = "status", nullable = false)
 	private Boolean status;
 	
 	@Column (name = "user_creation_id", nullable = false)
@@ -117,5 +117,6 @@ public class Views {
 		this.dateModification = dateModification;
 	}
 
+	
 	
 }

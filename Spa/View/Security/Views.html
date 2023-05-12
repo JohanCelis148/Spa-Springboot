@@ -10,7 +10,7 @@
     <script src="/Js/View/Security/Views.js"></script>
     <!-- Agregar jquery -->
     <script src="/Asset/Library/node_modules/jquery/dist/jquery.js"></script>
-    <script src="/Js/View/Security/Roles.js"></script>
+    <script src="/Js/View/Security/Views.js"></script>
     <script src="/Js/LoadData.js"></script>
     <title>Views | Spa</title>
 </head>
@@ -27,16 +27,16 @@
                 <div class="form-group">
                     <div class="campos">
                         <label for="" class="form-label mt-2 ">Ruta</label><br>
-                        <input type="url" class="form-control codigo" name="route" id="route" aria-describedby="" placeholder="Digite el codigo">
+                        <input type="url" class="form-control codigo" name="route" id="route" aria-describedby="" placeholder="Inserte la ruta destino">
                     </div>
 
                     <div class="campos">
                         <label for="" class="form-label mt-2">Etiqueta</label><br>
-                        <input type="text" class="form-control" name="label" id="label" aria-describedby="" placeholder="Describa el rol" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                        <input type="text" class="form-control" name="label" id="label" aria-describedby="" placeholder="Describa la etiqueta que colocara" onkeyup="javascript:this.value=this.value.toUpperCase();">
                     </div>
 
                     <div class="campos">
-                        <label for="" class="form-label mt-2">Modulo Id</label><br>
+                        <label for="" class="form-label mt-2">Modulo asociado</label><br>
                         <select class="form-select" id="moduleId" name="moduleId">
                             <!-- data result database -->
                         </select>
@@ -65,10 +65,9 @@
         <table class="table table-hover">
             <thead>
                 <tr class="table-primary">
-                    <th>Id</th>
                     <th>Ruta</th>
                     <th>Etiqueta</th>
-                    <th>Modulo Id</th>
+                    <th>Modulo asociado</th>
                     <th>Estado</th>
                     <th colspan="2">Opciones</th>
                 </tr>

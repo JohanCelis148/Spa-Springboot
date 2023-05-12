@@ -7,7 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel="stylesheet" href="/Asset/Css/View/Security/ViewsRoles.css">
-    <script src="/Js/View/Security/ViewRoles.js"></script>
+    <!-- Agregar jquery -->
+    <script src="/Asset/Library/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/Js/View/Security/View_roles.js"></script>
+    <script src="/Js/LoadData.js"></script>
     <title>Persons | Spa</title>
 </head>
 
@@ -23,22 +26,16 @@
                 <div class="form-group">
 
                     <div class="campos">
-                        <label for="" class="form-label mt-2">Rol Id</label><br>
-                        <select class="form-select" id="status" name="status">
+                        <label for="" class="form-label mt-2">Rol asociado</label><br>
+                        <select class="form-select" id="roleId" name="roleId">
                             <!-- data result database -->
-                            <option selected="" selected disabled hidden>--- Seleccione ---</option>
-                            <option value="1">Gerente</option>
-                            <option value="2">Auxiliar</option>
                         </select>
                     </div>
 
                     <div class="campos">
                         <label for="" class="form-label mt-2">Vista Id</label><br>
-                        <select class="form-select" id="status" name="status">
+                        <select class="form-select" id="viewId" name="viewId">
                             <!-- data result database -->
-                            <option selected="" selected disabled hidden>--- Seleccione ---</option>
-                            <option value="1">Seguridad</option>
-                            <option value="2">Servicios</option>
                         </select>
                     </div>
 
@@ -65,23 +62,14 @@
         <table class="table table-hover">
             <thead>
                 <tr class="table-primary">
-                    <th>Id</th>
-                    <th>Rol Id</th>
-                    <th>Vista Id</th>
+                    <th>Rol asociado</th>
+                    <th>Vista asociada</th>
                     <th>Estado</th>
                     <th colspan="2">Opciones</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="dataResult">
                 <!-- data result database -->
-                <tr class="table-light">
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>Activo</td>
-                    <td><button class="btnEdit" type="button" onclick="findById();"><i class="fi fi-rr-pencil"></i></button></td>
-                    <td><button class="btnDelete" type="button" onclick="deleteById();"><i class="fi fi-rr-trash"></i></button></td>
-                </tr>
                 
             </tbody>
         </table>
@@ -95,3 +83,9 @@
 </body>
 
 </html>
+
+<script>
+    loadTable();
+    loadRole();
+    loadView();
+</script>
