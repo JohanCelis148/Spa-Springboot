@@ -2,7 +2,6 @@ package com.sena.backedservice.IRepository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
 
 import com.sena.backedservice.Dto.ILoginDto;
 import com.sena.backedservice.Dto.IPermissionDto;
@@ -11,7 +10,6 @@ import com.sena.backedservice.Entity.User;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
 public interface IUserRepository extends JpaRepository<User, Long>{
 
 	@Query(value = " SELECT  "

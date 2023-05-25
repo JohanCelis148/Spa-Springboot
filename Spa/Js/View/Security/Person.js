@@ -2,7 +2,7 @@
 // Busqueda por id
 function findById(id) {
     $.ajax({
-        url: 'http://localhost:9000/security/api/security/persons/' + id,
+        url: 'http://localhost:9000/backend-service/api/security/person/' + id,
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -16,17 +16,17 @@ function findById(id) {
         $("#firstLastName").val(item.firstLastName)
         $("#secondLastName").val(item.secondLastName)
         $("#age").val(item.age)
-        $("#gender").val(item.gender)
+        $("#gender").val(item.gender==true?'1':'0')
         $("#mail").val(item.mail)
         $("#phoneNumber").val(item.phoneNumber)
         $("#address").val(item.address)
-        $("#status").val(item.status==true?'1':'0')      
+        $("#state").val(item.state==true?'1':'0')      
     })
 }
 
 function loadTable() {
     $.ajax({
-        url: 'http://localhost:9000/security/api/security/persons',
+        url: 'http://localhost:9000/backend-service/api/security/person',
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -44,11 +44,11 @@ function loadTable() {
                             <td>`+item.firstLastName+`</td>
                             <td>`+item.secondLastName+`</td>
                             <td>`+item.age+`</td>
-                            <td>`+item.gender+`</td>
+                            <td>`+(item.gender==true?'Hombre':'Mujer')+`</td>
                             <td>`+item.mail+`</td>
                             <td>`+item.phoneNumber+`</td>
                             <td>`+item.address+`</td>
-                            <td>`+(item.status==true?'Activo':'Inactivo')+`</td>
+                            <td>`+(item.state==true?'Activo':'Inactivo')+`</td>
                             <td><button class="btnEdit" type="button" onclick="findById(`+item.id+`);"><i class="fi fi-rr-pencil"></i></button></td>
                             <td><button class="btnDelete" type="button" onclick="deleteById(`+item.id+`);"><i class="fi fi-rr-trash"></i></button></td>
                         </tr>
@@ -61,7 +61,7 @@ function loadTable() {
 //Accion para eliminar un registro seleccionado 
 function deleteById(id){
     $.ajax({
-        url: 'http://localhost:9000/security/api/security/persons/' + id,
+        url: 'http://localhost:9000/backend-service/api/security/person/' + id,
         method: "delete",
         headers: {
             "Content-Type": "application/json"
@@ -75,7 +75,7 @@ function deleteById(id){
 //Accion de adicionar un registro
 function Add(){
     $.ajax({
-        url: 'http://localhost:9000/security/api/security/persons',
+        url: 'http://localhost:9000/backend-service/api/security/person',
         data: JSON.stringify({
             documentType: $("#documentType").val(),
             document: $("#document").val(),
@@ -83,12 +83,12 @@ function Add(){
             secondName: $("#secondName").val(),
             firstLastName: $("#firstLastName").val(),
             secondLastName: $("#secondLastName").val(),
-            age: $("#age").val(),
-            gender: $("#gender").val(),
+            age: parseInt($("#age").val()),
+            gender: parseInt($("#gender").val()),
             mail: $("#mail").val(),
             phoneNumber: $("#phoneNumber").val(),
             address: $("#address").val(),
-            status: parseInt($("#status").val()),
+            state: parseInt($("#state").val()),
             userCreationId: 1,
             dateCreation: new Date()
         }),
@@ -109,7 +109,7 @@ function Add(){
 //Accion de actualizar un registro
 function Update(){
     $.ajax({
-        url: 'http://localhost:9000/security/api/security/persons/' + $("#id").val(),
+        url: 'http://localhost:9000/backend-service/api/security/person/' + $("#id").val(),
         data: JSON.stringify({
             documentType: $("#documentType").val(),
             document: $("#document").val(),
@@ -117,12 +117,12 @@ function Update(){
             secondName: $("#secondName").val(),
             firstLastName: $("#firstLastName").val(),
             secondLastName: $("#secondLastName").val(),
-            age: $("#age").val(),
-            gender: $("#gender").val(),
+            age: parseInt($("#age").val()),
+            gender: parseInt($("#gender").val()),
             mail: $("#mail").val(),
             phoneNumber: $("#phoneNumber").val(),
             address: $("#address").val(),
-            status: parseInt($("#status").val()),
+            state: parseInt($("#state").val()),
             userCreationId: 1,
             dateCreation: new Date(),
             userModificationId: 1,
@@ -155,5 +155,5 @@ function clearData(){
     $("#mail").val(""),
     $("#phoneNumber").val(""),
     $("#address").val(""),
-    $("#status").val("")
+    $("#state").val("")
 }
