@@ -1,6 +1,6 @@
 function loadModulo(){
     $.ajax({
-        url: 'http://localhost:9000/security/api/security/modules',
+        url: 'http://localhost:9000/backend-service/api/security/module',
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -9,7 +9,7 @@ function loadModulo(){
         var registros = `<option selected="" selected disabled hidden>--- Seleccione ---</option>`;
         items.forEach(function(item, index, array){
             registros += `
-                <option value="`+item.id+`">`+item.code+` - `+item.description+`</option>
+                <option value="`+item.id+`">`+item.code+` - `+item.route+`</option>
             `;
         })
         $("#moduleId").html(registros);
@@ -18,7 +18,7 @@ function loadModulo(){
 
 function loadRole(){
     $.ajax({
-        url: 'http://localhost:9000/security/api/security/roles',
+        url: 'http://localhost:9000/backend-service/api/security/roles',
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -36,7 +36,7 @@ function loadRole(){
 
 function loadView(){
     $.ajax({
-        url: 'http://localhost:9000/security/api/security/views',
+        url: 'http://localhost:9000/backend-service/api/security/views',
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -54,7 +54,7 @@ function loadView(){
 
 function loadPerson(){
     $.ajax({
-        url: 'http://localhost:9000/security/api/security/persons',
+        url: 'http://localhost:9000/backend-service/api/security/persons',
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -72,7 +72,7 @@ function loadPerson(){
 
 function loadUser(){
     $.ajax({
-        url: 'http://localhost:9000/security/api/security/users',
+        url: 'http://localhost:9000/backend-service/api/security/users',
         method: "GET",
         headers: {
             "Content-Type": "application/json"
