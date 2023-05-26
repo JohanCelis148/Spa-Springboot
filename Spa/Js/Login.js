@@ -54,3 +54,38 @@ function Clear() {
     document.getElementById('txtuser').value = '';
     document.getElementById('txtPassword').value = '';
 }
+
+//pintar permiso
+
+function loadPermission() {
+    $.ajax({
+        url: 'http://localhost:9000/backend-service/api/security/user/permission/johancelis98/1234',
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).done(function (items) {
+        var permission = `
+                <span class="modulo">Seguridad</span>
+                <li>
+                    <a href="Board.html" target="workSpace">
+                        <i class="fi fi-rr-layout-fluid"></i>
+                        <span class="links_name">Tablero</span>
+                    </a>
+                    <span class="tooltip">Tablero</span>
+                </li>
+        `;
+        items.forEach(function (item, index, array) {
+            permission += `
+                <li>
+                    <a href="`+item.label+`/`+item.route+`" target="workSpace">
+                        <i class="fi fi-rr-users"></i>
+                        <span class="links_name">`+item.description+`</span>
+                    </a>
+                    <span class="tooltip">`+item.view+`</span>
+                </li>
+            `;
+        })
+        $("#dataPermission").html(permission);   
+    })
+}

@@ -1,4 +1,4 @@
-function loadModulo(){
+function loadModulo(){ 
     $.ajax({
         url: 'http://localhost:9000/backend-service/api/security/module',
         method: "GET",
@@ -18,7 +18,7 @@ function loadModulo(){
 
 function loadRole(){
     $.ajax({
-        url: 'http://localhost:9000/backend-service/api/security/roles',
+        url: 'http://localhost:9000/backend-service/api/security/role',
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -36,7 +36,7 @@ function loadRole(){
 
 function loadView(){
     $.ajax({
-        url: 'http://localhost:9000/backend-service/api/security/views',
+        url: 'http://localhost:9000/backend-service/api/security/view',
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -54,7 +54,7 @@ function loadView(){
 
 function loadPerson(){
     $.ajax({
-        url: 'http://localhost:9000/backend-service/api/security/persons',
+        url: 'http://localhost:9000/backend-service/api/security/person',
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -72,7 +72,7 @@ function loadPerson(){
 
 function loadUser(){
     $.ajax({
-        url: 'http://localhost:9000/backend-service/api/security/users',
+        url: 'http://localhost:9000/backend-service/api/security/user',
         method: "GET",
         headers: {
             "Content-Type": "application/json"

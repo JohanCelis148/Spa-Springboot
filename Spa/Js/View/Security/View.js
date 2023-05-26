@@ -33,7 +33,7 @@ function loadTable() {
                             <td>`+item.code+`</td>
                             <td>`+item.route+`</td>
                             <td>`+item.label+`</td>
-                            <td>`+item.moduleId.description+`</td>
+                            <td>`+item.moduleId.label+`</td>
                             <td>`+(item.state==true?'Activo':'Inactivo')+`</td>
                             <td><button class="btnEdit" type="button" onclick="findById(`+item.id+`);"><i class="fi fi-rr-pencil"></i></button></td>
                             <td><button class="btnDelete" type="button" onclick="deleteById(`+item.id+`);"><i class="fi fi-rr-trash"></i></button></td>
@@ -67,8 +67,8 @@ function Add(){
             route: $("#route").val(),
             label: $("#label").val(),
             moduleId: {
-                id:$("#moduleId").val()
-            },  
+                id: $("#moduleId").val()
+            },
             state: parseInt($("#state").val()),
             userCreationId: 1,
             dateCreation: new Date()
@@ -120,6 +120,7 @@ function Update(){
 // Función para limpiar datos
 function clearData(){
     $("#id").val(""),
+    $("#code").val(""),
     $("#route").val(""),
     $("#label").val(""),
     $("#moduleId").val(""),
