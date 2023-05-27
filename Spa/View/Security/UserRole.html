@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-    <link rel="stylesheet" href="/Asset/Css/View/Security/ViewsRoles.css">
+    <link rel="stylesheet" href="../../Asset/Css/View/Security/UserRole.css">
     <!-- Agregar jquery -->
-    <script src="/Asset/Library/node_modules/jquery/dist/jquery.js"></script>
-    <script src="/Js/View/Security/View_role.js"></script>
-    <script src="/Js/LoadData.js"></script>
+    <script src="../../Asset/Library/node_modules/jquery/dist/jquery.js"></script>
+    <script src="../../Js/LoadData.js"></script>
+    <script src="../../Js/View/Security/UserRole.js"></script>
     <title>Persons | Spa</title>
 </head>
 
@@ -18,7 +18,7 @@
     <div class="container">
         <form name="formData" id="formData">
             <div id="headData" class="headData">
-                <h2>Vistas Roles</h2>
+                <h2>Usuarios Roles</h2>
             </div>
 
             <div id="bodyData" class="bodyData">
@@ -33,9 +33,10 @@
                     </div>
 
                     <div class="campos">
-                        <label for="" class="form-label mt-2">Vista Id</label><br>
-                        <select class="form-select" id="viewId" name="viewId">
+                        <label for="" class="form-label mt-2">Usuario asociado</label><br>
+                        <select class="form-select" id="userId" name="userId">
                             <!-- data result database -->
+                            
                         </select>
                     </div>
 
@@ -63,14 +64,13 @@
             <thead>
                 <tr class="table-primary">
                     <th>Rol asociado</th>
-                    <th>Vista asociada</th>
+                    <th>Usuario asociado</th>
                     <th>Estado</th>
                     <th colspan="2">Opciones</th>
                 </tr>
             </thead>
             <tbody id="dataResult">
                 <!-- data result database -->
-                
             </tbody>
         </table>
     </div>
@@ -87,5 +87,5 @@
 <script>
     loadTable();
     loadRole();
-    loadView();
+    loadUser();
 </script>

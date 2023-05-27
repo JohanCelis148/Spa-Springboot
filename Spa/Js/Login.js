@@ -61,6 +61,9 @@ function Clear() {
 //pintar permiso
 
 function loadPermission() {
+
+    let user = document.getElementById('txtuser').value;
+    let password = document.getElementById('txtpassword').value;
     
     $.ajax({
         url: 'http://localhost:9000/backend-service/api/security/user/permission/'+user+'/'+password+'',
@@ -70,23 +73,6 @@ function loadPermission() {
         }
         
     }).done(function (items) {
-
-        Swal.fire({
-            icon: 'success',
-            title: 'Bienvenido',
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: 'Continuar',
-            denyButtonText: `No continuar`,
-        }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
-            if (result.isConfirmed) {
-                window.location.assign('Dashboard.html');
-            } else if (result.isDenied) {
-                Swal.fire('Se canceló el ingreso', '', 'info')
-                Clear();
-            }
-        })
         var permission = `
                 <span class="modulo">Seguridad</span>
                 <li>
@@ -109,6 +95,35 @@ function loadPermission() {
                     <a id="log_out" name='cerrar' onclick="SignOut()"><i class='bx bx-log-out bx-lg'  ></i></a>
                 </li>
         `;
+        items.forEach(function (item, index, array) {
+            permission += `
+                <li>
+                    <a href="`+item.moduleRoute+`/`+item.viewRoute+`" target="workSpace">
+                        <i ></i>
+                        <span class="links_name">`+item.viewLabel+`</span>
+                    </a>
+                    <span class="tooltip">`+item.view+`</span>
+                </li>
+            `;
+        })
+        $("#dataPermission").html(permission);   
+    })
+}
+
+
+
+
+function login(){
+    
+
+    $.ajax({
+        url: 'http://localhost:9000/backend-service/api/security/user/permission/'+ $("#txtuser").val()+'/'+ $("#passwor").val()+'',
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+        
+    }).done(function (items) {
         items.forEach(function (item, index, array) {
             permission += `
                 <li>
