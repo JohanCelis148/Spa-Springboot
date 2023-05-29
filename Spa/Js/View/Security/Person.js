@@ -135,14 +135,7 @@ function Add(){
         Toast.fire({
             icon: 'success',
             title: 'Registro exitoso',
-        }).fail(function (jqXHR, textStatus, errorThrown) {
-            // Si la respuesta es un error
-            Swal.fire({
-                icon: 'success',
-                title: "Error",
-                text: jqXHR.responseJSON.message,
-            })      
-        });
+        })
 
         
     }).fail(function (jqXHR, textStatus, errorThrown) {
