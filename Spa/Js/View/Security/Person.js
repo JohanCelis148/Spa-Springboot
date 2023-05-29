@@ -82,7 +82,7 @@ function deleteById(id){
         Toast.fire({
             icon: 'error',
             title: 'Persona eliminada',
-        })
+        });
         loadTable();
     })
 }
@@ -174,7 +174,9 @@ function Update(){
             address: $("#address").val(),
             state: parseInt($("#state").val()),
             userCreationId: 1,
-            dateCreation: new Date()
+            dateCreation: new Date(),
+            userModificationId: 1,
+            dateModification: new Date()
         }),
         method: "PUT",
         headers: {
@@ -186,6 +188,23 @@ function Update(){
 
         //Limpiar formulario
         clearData();
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+          
+        Toast.fire({
+            icon: 'warning',
+            title: 'Modificación exitosa',
+        })
     })
 }
 
