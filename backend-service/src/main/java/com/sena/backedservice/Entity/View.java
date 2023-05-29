@@ -21,10 +21,6 @@ public class View extends BaseModel{
 	@Schema(description = "Código de la vista")
 	private String code;
 	
-	@Column (name = "icon", nullable = false)
-	@Schema(description = "Icono de la vista")
-	private String icon;
-	
 	@Column(name = "route", nullable = false, length = 150, unique = true)
 	@Schema(description = "Ruta de la vista")
 	private String route;
@@ -110,14 +106,4 @@ public class View extends BaseModel{
 	public void setModuleId(Module moduleId) {
 		this.moduleId = moduleId;
 	}
-
-	public String getIcon() {
-		return icon;
-	}
-
-	public void setIcon(String icon) {
-		this.icon = icon;
-	}
-	
-	
 }

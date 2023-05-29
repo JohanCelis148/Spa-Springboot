@@ -32,6 +32,4 @@ public interface IPermissionDto {
      * @return la etiqueta del módulo
      */
     String getModuleLabel();
-    
-    String getViewIcon();
 }

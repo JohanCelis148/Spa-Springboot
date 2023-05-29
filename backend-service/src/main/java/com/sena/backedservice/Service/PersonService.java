@@ -8,7 +8,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.sena.backedservice.Dto.IModuleDto;
 import com.sena.backedservice.Dto.IPersonDto;
 import com.sena.backedservice.Entity.Person;
 
@@ -62,10 +61,6 @@ public class PersonService implements IPersonService {
      */
     @Override
     public Person save(Person person) throws Exception{
-    	Optional<IPersonDto> op = repository.getValidate(person.getDocument(),person.getFirstName());
-    	if (op.get().getQuantity()>=1) {
-            throw new Exception("Validar datos, ya existe registro con este código o ruta.");
-        }
         return repository.save(person);
     }
 

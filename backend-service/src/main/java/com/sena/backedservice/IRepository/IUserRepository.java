@@ -18,9 +18,8 @@ import java.util.Optional;
 public interface IUserRepository extends JpaRepository<User, Long>{
 
 	@Query(value = " SELECT  "
-					+ "    v.route viewRoute, "
+					+ "	v.route viewRoute, "
 					+ "    v.label viewLabel, "
-					+ "    v.icon  viewIcon, "
 					+ "    m.route moduleRoute, "
 					+ "    m.label moduleLabel "
 					+ "FROM  "

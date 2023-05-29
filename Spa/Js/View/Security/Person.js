@@ -114,6 +114,12 @@ function Add(){
         }
     }).done(function (result) {
 
+        //Cargar datos
+        loadTable();
+
+        //Limpiar formulario
+        clearData();
+
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
@@ -132,17 +138,13 @@ function Add(){
         }).fail(function (jqXHR, textStatus, errorThrown) {
             // Si la respuesta es un error
             Swal.fire({
-                icon: 'error',
+                icon: 'success',
                 title: "Error",
                 text: jqXHR.responseJSON.message,
             })      
         });
 
-        //Cargar datos
-        loadTable();
-
-        //Limpiar formulario
-        clearData();
+        
     }).fail(function (jqXHR, textStatus, errorThrown) {
         // Si la respuesta es un error
         Swal.fire({
@@ -172,33 +174,13 @@ function Update(){
             address: $("#address").val(),
             state: parseInt($("#state").val()),
             userCreationId: 1,
-            dateCreation: new Date(),
-            userModificationId: 1,
-            dateModification: new Date()
+            dateCreation: new Date()
         }),
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
         }
     }).done(function (result) {
-
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 5000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener('mouseenter', Swal.stopTimer)
-              toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-        })
-          
-        Toast.fire({
-            icon: 'warning',
-            title: 'Modificación exitosa',
-        })
-
         //Cargar datos
         loadTable();
 
