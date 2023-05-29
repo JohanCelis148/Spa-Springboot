@@ -10,6 +10,7 @@ function findById(id) {
     }).done(function (item) {
         $("#id").val(item.id)
         $("#code").val(item.code)
+        $("#icon").val(item.icon)
         $("#route").val(item.route)
         $("#label").val(item.label)
         $("#moduleId").val(item.moduleId.id)
@@ -64,6 +65,7 @@ function Add(){
         url: 'http://localhost:9000/backend-service/api/security/view',
         data: JSON.stringify({
             code: $("#code").val(),
+            icon: $("#icon").val(),
             route: $("#route").val(),
             label: $("#label").val(),
             moduleId: {
@@ -93,6 +95,7 @@ function Update(){
         url: 'http://localhost:9000/backend-service/api/security/view/' + $("#id").val(),
         data: JSON.stringify({
             code: $("#code").val(),
+            icon: $("#icon").val(),
             route: $("#route").val(),
             label: $("#label").val(),
             moduleId: {
@@ -121,6 +124,7 @@ function Update(){
 function clearData(){
     $("#id").val(""),
     $("#code").val(""),
+    $("#icon").val(""),
     $("#route").val(""),
     $("#label").val(""),
     $("#moduleId").val(""),

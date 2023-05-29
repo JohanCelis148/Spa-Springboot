@@ -60,13 +60,10 @@ function Clear() {
 
 //pintar permiso
 
-function loadPermission() {
-
-    let user = document.getElementById('txtuser').value;
-    let password = document.getElementById('txtpassword').value;
+function loadPermission(){
     
     $.ajax({
-        url: 'http://localhost:9000/backend-service/api/security/user/permission/'+user+'/'+password+'',
+        url: 'http://localhost:9000/backend-service/api/security/user/permission/J12/1234',
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -84,7 +81,7 @@ function loadPermission() {
                 </li>
                 <li class="profile">
                     <div class="profile-details">
-                        <img src="/Asset/Img/myAvatar.png" alt="profileImg">
+                        <img src="../Asset/Img/myAvatar.png" alt="profileImg">
                         <div class="name_job">
                             <div class="name">Johan Celis</div>
                             <div class="job">Administrador</div>
@@ -99,39 +96,10 @@ function loadPermission() {
             permission += `
                 <li>
                     <a href="`+item.moduleRoute+`/`+item.viewRoute+`" target="workSpace">
-                        <i ></i>
+                        <i class="`+item.viewIcon+`"></i>
                         <span class="links_name">`+item.viewLabel+`</span>
                     </a>
-                    <span class="tooltip">`+item.view+`</span>
-                </li>
-            `;
-        })
-        $("#dataPermission").html(permission);   
-    })
-}
-
-
-
-
-function login(){
-    
-
-    $.ajax({
-        url: 'http://localhost:9000/backend-service/api/security/user/permission/'+ $("#txtuser").val()+'/'+ $("#passwor").val()+'',
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        }
-        
-    }).done(function (items) {
-        items.forEach(function (item, index, array) {
-            permission += `
-                <li>
-                    <a href="`+item.moduleRoute+`/`+item.viewRoute+`" target="workSpace">
-                        <i ></i>
-                        <span class="links_name">`+item.viewLabel+`</span>
-                    </a>
-                    <span class="tooltip">`+item.view+`</span>
+                    <span class="tooltip">`+item.viewLabel+`</span>
                 </li>
             `;
         })

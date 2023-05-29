@@ -51,6 +51,24 @@ function deleteById(id){
             "Content-Type": "application/json"
         }
     }).done(function (result) {
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+          
+        Toast.fire({
+            icon: 'error',
+            title: 'Modulo eliminado',
+        })
+
         loadTable();
     })
 }
@@ -73,12 +91,38 @@ function Add(){
             "Content-Type": "application/json"
         }
     }).done(function (result) {
+
+        // Si la respuesta es un ok
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 7000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+          
+        Toast.fire({
+            icon: 'success',
+            title: 'Registro exitoso',
+        })
+
         //Cargar datos
         loadTable();
 
         //Limpiar formulario
         clearData();
-    })
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        // Si la respuesta es un error
+        Swal.fire({
+            icon: 'error',
+            title: "Error",
+            text: jqXHR.responseJSON.message,
+        })      
+    });
 }
 
 
@@ -101,6 +145,24 @@ function Update(){
             "Content-Type": "application/json"
         }
     }).done(function (result) {
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+          
+        Toast.fire({
+            icon: 'warning',
+            title: 'Modificación exitosa',
+        })
+
         //Cargar datos
         loadTable();
 

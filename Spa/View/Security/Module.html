@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel="stylesheet" href="../../Asset/Css/View/Security/Module.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Agregar jquery -->
     <script src="../../Asset/Library/node_modules/jquery/dist/jquery.js"></script>
@@ -27,7 +28,7 @@
                 <input type="hidden" name="id" id="id" value="">
                 <div class="form-group">
                     <div class="campos">
-                        <label for="" class="form-label mt-2 ">Codigo</label><br>
+                        <label for="" class="form-label mt-2 ">Código</label><br>
                         <input type="url" class="form-control codigo" name="code" id="code" aria-describedby="" placeholder="Digite el codigo">
                     </div>
 
@@ -55,7 +56,7 @@
     </div>
 
     <div id="buttonData" class="buttonData">
-        <button type="button" id="btnAdd" name="btnAdd" class="btn btn-primary" onclick="Add()">Agregar</button>
+        <button type="button" id="btnAdd" name="btnAdd" class="btn btn-primary" onclick="Add()">Registrar</button>
         <button type="button" id="btnUpdate" name="btnUpdate" class="btn btn-success" onclick="Update()">Modificar</button>
         <!-- <button type="button" id="btnConsult" name="btnConsult" class="btn btn-warning" onclick="Consult()">Consultar</button> -->
     </div>
@@ -64,7 +65,7 @@
         <table class="table table-hover">
             <thead>
                 <tr class="table-primary">
-                    <th>Codigo</th>
+                    <th>Código</th>
                     <th>Ruta</th>
                     <th>Etiqueta</th>
                     <th>Estado</th>
