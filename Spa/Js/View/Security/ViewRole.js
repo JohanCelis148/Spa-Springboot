@@ -50,6 +50,23 @@ function deleteById(id){
         }
     }).done(function (result) {
         loadTable();
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 4000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+          
+        Toast.fire({
+            icon: 'error',
+            title: 'Usuario eliminado',
+        });
     })
 }
 
@@ -79,7 +96,31 @@ function Add(){
 
         //Limpiar formulario
         clearData();
-    })
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 4000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+          
+        Toast.fire({
+            icon: 'success',
+            title: 'Registro exitoso',
+        });
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        // Si la respuesta es un error
+        Swal.fire({
+            icon: 'error',
+            title: "Error",
+            text: jqXHR.responseJSON.message,
+        })    
+    });
 }
 
 
@@ -110,6 +151,23 @@ function Update(){
 
         //Limpiar formulario
         clearData();
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 4000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+          
+        Toast.fire({
+            icon: 'warning',
+            title: 'Modificación exitosa',
+        });
     })
 }
 

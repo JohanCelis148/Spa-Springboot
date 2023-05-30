@@ -51,12 +51,14 @@ function deleteById(id){
             "Content-Type": "application/json"
         }
     }).done(function (result) {
+        
+        loadTable();
 
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
-            timer: 5000,
+            timer: 4000,
             timerProgressBar: true,
             didOpen: (toast) => {
               toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -69,7 +71,7 @@ function deleteById(id){
             title: 'Modulo eliminado',
         })
 
-        loadTable();
+        
     })
 }
 
@@ -97,7 +99,7 @@ function Add(){
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
-            timer: 7000,
+            timer: 4000,
             timerProgressBar: true,
             didOpen: (toast) => {
               toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -150,7 +152,7 @@ function Update(){
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
-            timer: 5000,
+            timer: 4000,
             timerProgressBar: true,
             didOpen: (toast) => {
               toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -174,6 +176,7 @@ function Update(){
 // Función para limpiar datos
 function clearData(){
     $("#id").val(""),
+    $("#code").val(""),
     $("#route").val(""),
     $("#label").val(""),
     $("#state").val("")

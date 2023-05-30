@@ -25,6 +25,14 @@ public interface IPermissionDto {
      * @return la ruta del módulo
      */
     String getModuleRoute();
+    
+    
+    /**
+     * Obtiene la ruta del módulo asociado al permiso.
+     *
+     * @return la ruta del módulo
+     */
+    String getViewIcon();
 
     /**
      * Obtiene la etiqueta del módulo asociado al permiso.

@@ -49,6 +49,8 @@ function deleteById(id){
             "Content-Type": "application/json"
         }
     }).done(function (result) {
+        loadTable();
+
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
@@ -65,7 +67,6 @@ function deleteById(id){
             icon: 'error',
             title: 'Rol eliminado',
         });
-        loadTable();
     })
 }
 
