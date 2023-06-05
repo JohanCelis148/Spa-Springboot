@@ -80,24 +80,20 @@ body{
     background: black;
 }
 
-.resultData{
-    margin-left: 40px;
-    margin-right: 40px;
+#resultData{
+    padding-left: 80px;
+    padding-right: 80px;
     margin-top: 80px;
 }
 
 .table { 
+    padding: 40px;
     border-collapse: collapse; 
-    margin: 25px -10px; 
+    margin: 30px -10px; 
     font-size: 1em; 
     font-family: sans-serif; 
-    min-width: 800px; 
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); 
+    min-width: 1000px; 
     height: 10%;
-    position: absolute;
-    left: 45%;
-    top: 15%;
-    right: 10%;
 }
 
 .table td{
