@@ -16,8 +16,7 @@ import java.util.Optional;
 public interface IUserRepository extends JpaRepository<User, Long>{
 
 	@Query(value = " SELECT  "
-					+ "	   v.route viewRoute, "
-					+ "	   v.icon viewIcon, "
+					+ "	v.route viewRoute, "
 					+ "    v.label viewLabel, "
 					+ "    m.route moduleRoute, "
 					+ "    m.label moduleLabel "

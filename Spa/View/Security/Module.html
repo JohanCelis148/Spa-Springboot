@@ -8,11 +8,18 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel="stylesheet" href="../../Asset/Css/View/Security/Module.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+
+    <!-- DataTables -->
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css">
+
 
     <!-- Agregar jquery -->
     <script src="../../Asset/Library/node_modules/jquery/dist/jquery.js"></script>
 
-    <script src='../..//Js/View/Security/Module.js'></script>
+    <script src='../../Js/View/Security/Module.js'></script>
 
     <title>Persons | Spa</title>
 </head>
@@ -62,7 +69,7 @@
     </div>
 
     <div id="resultData" class="resultData">
-        <table class="table table-hover">
+        <table class="display" id="tableData">
             <thead>
                 <tr class="table-primary">
                     <th>Código</th>
@@ -73,7 +80,7 @@
                 </tr>
             </thead>
             <tbody id="dataResult">
-                
+
             </tbody>
         </table>
     </div>

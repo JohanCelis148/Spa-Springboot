@@ -16,7 +16,7 @@ public interface IPersonRepository extends JpaRepository<Person, Long>{
     Page<IPersonDto> getDatatable(Pageable pageable, String search);
 	
 	@Query(value = "SELECT "
-			+ " 	count(document) as quantity "
+			+ " 	count(id) as quantity "
 			+ " FROM "
 			+ " 	person "
 			+ " WHERE document = :document "

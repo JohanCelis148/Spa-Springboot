@@ -58,7 +58,7 @@ function deleteById(id){
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
-            timer: 4000,
+            timer: 2000,
             timerProgressBar: true,
             didOpen: (toast) => {
               toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -99,7 +99,7 @@ function Add(){
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
-            timer: 4000,
+            timer: 2000,
             timerProgressBar: true,
             didOpen: (toast) => {
               toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -152,7 +152,7 @@ function Update(){
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
-            timer: 4000,
+            timer: 2000,
             timerProgressBar: true,
             didOpen: (toast) => {
               toast.addEventListener('mouseenter', Swal.stopTimer)

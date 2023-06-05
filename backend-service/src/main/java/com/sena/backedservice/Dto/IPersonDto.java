@@ -1,25 +1,30 @@
 package com.sena.backedservice.Dto;
 
 public interface IPersonDto {
-	/**
-     * Obtiene el documento de la persona.
-     *
-     * @return el documento de la persona
-     */
+	
+	public enum DocumentType { CE, CC, TI, PP, DNI }
+	
+	String getFirstname();
+	
+	String getSecondname();
+	
+	String getFirstlastname();
+	
+	String getSecondlastname();
+	
+	DocumentType getDocumenttype();
+	
 	String getDocument();
-    
-    /**
-     * Obtiene el mail de la persona.
-     *
-     * @return la ruta del modulo
-     */
+	
+	Byte getAge();
+	
+	Boolean getGender();
+	
 	String getMail();
-    
-    
-    /**
-     * Obtiene la cantidad de personas.
-     *
-     * @return la cantidad de personas
-     */
-    Integer getQuantity();
+	
+	String getPhonenumber();
+	
+	String getAddress();
+	
+	Integer getQuantity();
 }
