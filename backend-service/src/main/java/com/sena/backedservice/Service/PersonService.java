@@ -61,6 +61,10 @@ public class PersonService implements IPersonService {
      */
     @Override
     public Person save(Person person) throws Exception{
+    	Optional<IPersonDto> op = repository.getValidate(person.getDocument(),person.getMail());
+    	if (op.get().getQuantity()>=1) {
+            throw new Exception("Validar datos, el número de documento de identidad o correo electrónico ya existe.");
+        }
         return repository.save(person);
     }
 
