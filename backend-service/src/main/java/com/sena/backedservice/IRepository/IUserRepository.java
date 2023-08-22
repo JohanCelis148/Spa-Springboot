@@ -16,10 +16,11 @@ import java.util.Optional;
 public interface IUserRepository extends JpaRepository<User, Long>{
 
 	@Query(value = " SELECT  "
-					+ "	v.route viewRoute, "
-					+ "    v.label viewLabel, "
+					+ "	   v.route viewRoute,   "
+					+ "    v.label viewLabel,   "
 					+ "    m.route moduleRoute, "
-					+ "    m.label moduleLabel "
+					+ "    m.label moduleLabel, "
+					+ "    v.icon viewIcon      "
 					+ "FROM  "
 					+ "	user u  "
 					+ "	INNER JOIN user_role ur ON ur.user_id = u.id "

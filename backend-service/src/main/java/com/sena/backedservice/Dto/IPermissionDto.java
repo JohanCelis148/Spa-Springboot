@@ -18,6 +18,14 @@ public interface IPermissionDto {
      * @return la etiqueta de vista
      */
     String getViewLabel();
+    
+    
+    /**
+     * Obtiene la etiqueta de vista asociada al permiso.
+     *
+     * @return la etiqueta de vista
+     */
+    String getViewIcon();
 
     /**
      * Obtiene la ruta del módulo asociado al permiso.

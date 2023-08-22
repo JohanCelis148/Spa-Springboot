@@ -63,7 +63,7 @@ function Clear() {
 function loadPermission(){
     
     $.ajax({
-        url: 'http://localhost:9000/backend-service/api/security/user/permission/J12/1234',
+        url: 'http://localhost:9000/backend-service/api/security/user/permission/1234/1234',
         method: "GET",
         headers: {
             "Content-Type": "application/json"
